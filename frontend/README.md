@@ -1,8 +1,8 @@
 # Getting Started with Create React App
 
 ### if you completely finish clone repositary
-    >- run `npm install react-scripts`
-    >- run `npm install react-bootstrap bootstrap`
+>- run  `npm install react-scripts`
+>- run  `npm install react-bootstrap bootstrap`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
