@@ -2,7 +2,10 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import Pagination from 'react-bootstrap/Pagination';
+
+import { useState } from 'react';
+
+const itemPerPage = 4;
 
 const customerdata = [
     {
@@ -85,24 +88,27 @@ const customerdata = [
         link1: 'https://www.google.com',
         link2: 'https://www.google.com'
     }
-]
+];
 
-let items = [];
-for (let number = 1; number <= 5; number++) {
-  items.push(
-    <Pagination.Item key={number}>
-      {number}
-    </Pagination.Item>,
-  );
-}
+const numberOfPages = Math.ceil(customerdata.length / itemPerPage);
+
+const pageIndex = Array.from({length : numberOfPages}, (_,idx) => idx+1)
 
 export default function AppCustomers() {
+
+    const [currentPage, setCurrentPage] = useState(0);
+    const customerdatarow = customerdata.slice(currentPage * itemPerPage, (currentPage + 1) * itemPerPage);
+
+    const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
     return (
         <section className='block customer-block'>
             <Container fluid>
                 <Row>
                     {
-                        customerdata.map(customers => {
+                        customerdatarow.map(customers => {
                             return (
                                 <Col sm={3} key={customers.id}>
                                     <div className='holder'>
@@ -125,7 +131,18 @@ export default function AppCustomers() {
                     }
 
                 </Row>
-                <Pagination>{items}</Pagination>
+                <div className='pagination'>
+                    <button className='pagination-btn' disabled={currentPage < 1} onClick={() => handlePageChange(currentPage - 1)}>Prev</button>
+                    {pageIndex.slice(
+                        Math.max(0, currentPage - 2), 
+                        Math.min(numberOfPages, currentPage + 3)
+                        ).map(
+                            (page) => (<button key={page} onClick={() => handlePageChange(page-1)} className={page === currentPage+1 ? "pagination-btn-active" : "pagination-btn"}>
+                                {page}
+                                </button>
+                        ))}
+                    <button className='pagination-btn' disabled={currentPage >= numberOfPages-1} onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+                </div>
             </Container>
         </section>
     )
