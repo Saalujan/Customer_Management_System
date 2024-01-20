@@ -35,27 +35,23 @@
   width: 55px;
   text-align: center;
   color: white;
+  margin-top: 7px;
 }
 
-#header {
-  padding: 15px 0;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 9999;
+.search-bar {
+  padding-top: 15px;
+  width: auto;
   background: #fff;
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.5s linear;
 }
 
-#header .navbar {
+.search-bar .navbar {
   padding: 0;
   justify-content: space-between;
   background: none !important;
 }
 
-#header .navbar-brand {
+.search-bar .navbar-brand {
   color: #282c34;
   font-weight: 600;
   height: auto;
@@ -238,4 +234,8 @@ input[type=search], .sortby{
   font-size: 16px;
   line-height: 20px;
   border-radius: 50px;
+}
+
+input[type=search]{
+  margin-top: 7px;
 }

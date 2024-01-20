@@ -10,8 +10,8 @@ const itemPerPage = 4;
 const customerdata = [
     {
         id: 1,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 1',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
@@ -20,8 +20,8 @@ const customerdata = [
     },
     {
         id: 2,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 2',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
@@ -30,8 +30,8 @@ const customerdata = [
     },
     {
         id: 3,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 3',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
@@ -40,8 +40,8 @@ const customerdata = [
     },
     {
         id: 4,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 4',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
@@ -50,8 +50,8 @@ const customerdata = [
     },
     {
         id: 5,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 5',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
@@ -60,8 +60,8 @@ const customerdata = [
     },
     {
         id: 6,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 6',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
@@ -70,8 +70,8 @@ const customerdata = [
     },
     {
         id: 7,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 7',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
@@ -80,8 +80,8 @@ const customerdata = [
     },
     {
         id: 8,
-        image: require('../assets/images/customer1.jpg'),
-        title: 'Customer name',
+        image: require('../../Assets/images/customer1.jpg'),
+        title: 'Customer name 8',
         email: 'customeremail@gmail.com',
         date: '15 Nov 2016',
         time: '3 hours ago',
