@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'csm.apps.CmsConfig',
+    'cms.apps.CmsConfig',
     'rest_framework',
 ]
 
@@ -118,7 +118,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+import os
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 

@@ -21,15 +21,10 @@
     "react-router-dom": "^6.21.3",
     "react-scripts": "^5.0.1",
     "redux": "^5.0.0",
-<<<<<<< HEAD
     "web-vitals": "^2.1.4",
-    "localforage": "^1.10.0",
-    "match-sorter": "^6.3.1",
-    "sort-by": "^1.2.0"
-=======
-    "sort-by": "^1.2.0",
+   
     "web-vitals": "^2.1.4"
->>>>>>> f29a3413849916ea4585af5f5749c71baa59e521
+
   },
   "scripts": {
     "start": "react-scripts start",

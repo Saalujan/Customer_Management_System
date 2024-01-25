@@ -2,7 +2,7 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
-<<<<<<< HEAD
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -11,5 +11,4 @@ code {
 :root{
   --primary-color:#2c9ce7;
 }
-=======
->>>>>>> f29a3413849916ea4585af5f5749c71baa59e521
+
