@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CommonInput = ({ Label, Type, Name, Onchange, PlaceHolder, Disable, TextArea, error }) => {
+const CommonInput = ({ Label, Type, Name, Onchange, PlaceHolder, Disable, TextArea, error,id }) => {
     return (
         <>
             <div>
@@ -16,6 +16,7 @@ const CommonInput = ({ Label, Type, Name, Onchange, PlaceHolder, Disable, TextAr
                         onChange={Onchange}
                         placeholder={PlaceHolder}
                         disabled={Disable}
+                        id={id}
                         required
 
                     />
