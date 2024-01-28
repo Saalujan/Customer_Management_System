@@ -7,7 +7,6 @@ class Customer(models.Model):
    
     country = models.CharField(max_length=100)
     short_description = models.TextField()
-    # profile_picture = models.ImageField(upload_to='profile_pictures/')
-    # agreements = models.FileField(upload_to='agreements/')
-
+    profile_picture = models.TextField()
+    agreements = models.TextField()
     userId = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reservations')

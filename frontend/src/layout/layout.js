@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Bell from "../Assets/bell-icon.svg";
 import Msg from "../Assets/msg-icon.svg";
 // import Profile from "../src/Assets/profile-img.svg";
-import Profile from "../Assets/layoutDefaultProfile.jpg";
+import Profile from "../Assets/layoutprofile.jpg";
 import FeatherIcon from 'feather-icons-react';
 import { NavLink } from "react-router-dom";
-import Logo from "../Assets/logo.png"
+
 // import Logo from "../Assets/eduzon.svg"
 import SideClose from "../Assets/carbon_side-panel-close.svg";
 // import { useDispatch, useSelector } from 'react-redux'
@@ -42,7 +42,7 @@ function Layout({ children }) {
                         <div className={"w-100 px-sm-2 home-mobile"}>
                             <NavLink className={({ isActive }) => isActive ? "side-menu-item side-menu-active " : "side-menu-item "} to={"/AddCustomer"}>
                                 <div className={'d-flex'}>
-                                    <FeatherIcon icon="home" className={!open ? 'me-2' : "ms-1"} />
+                                    <FeatherIcon icon="user-plus" className={!open ? 'me-2' : "ms-1"} />
                                     {!open && <div className={'trans-1'}>Add Customer</div>}
                                 </div>
                             </NavLink>

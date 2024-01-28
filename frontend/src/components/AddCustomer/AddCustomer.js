@@ -2,8 +2,10 @@
 import Layout from '../../layout/layout'
 import CommonInput from '../common/CommonInput/CommonInput'
 import img from '../../Assets/Remote meeting-pana.png'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Cloudinary } from 'cloudinary-core';
+import axios from "axios"
+
 
 
 export const AddCustomer = () => {
@@ -11,7 +13,8 @@ export const AddCustomer = () => {
 
   const [inputs, setInputs] = useState({});
 
-  const [errors, setErrors] = useState(null);
+  const [paserrors, setPasErrors] = useState(null);
+  const [conpaserrors, setconPasErrors] = useState(null);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -19,16 +22,65 @@ export const AddCustomer = () => {
     setInputs(values => ({ ...values, [name]: value }))
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setPasErrors(null)
+      setconPasErrors(null)
+    }, 1000)
+  }, [paserrors, conpaserrors])
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs.agreement);
-    const agreementfile = event.target.elements.agreement.files[0];
-    const profilePicturefile = event.target.elements.profilePicture.files[0];
-    const agreementpicId = handleUpload(agreementfile);
-    const profilepicId = handleUpload(profilePicturefile);
+    const passwordValid = passwordValidate(inputs.password, inputs.con_password)
+    if (passwordValid) {
+      const agreementfile = event.target.elements.agreement.files[0];
+      const profilePicturefile = event.target.elements.profilePicture.files[0];
+      const agreementpicId = await handleUpload(agreementfile);
+      const profilepicId = await handleUpload(profilePicturefile);
+      console.warn(agreementpicId)
+      register(agreementpicId, profilepicId);
+
+    }
+
+    else {
+      alert("Password does not meet the criteria or does not match")
+    }
 
   };
+
+  const register = (agreementpicId, profilepicId) => {
+    if (agreementpicId != false && profilepicId != false) {
+      axios.post("http://127.0.0.1:8000/user/", {
+        user: {
+          first_name: inputs.fname,
+          last_name: inputs.lname,
+          username: inputs.Uname,
+          email: inputs.email,
+          password: inputs.password
+        },
+        customer: {
+          country: inputs.country,
+          short_description: inputs.shortDescription,
+          profile_picture: profilepicId,
+          agreements: agreementpicId
+        }
+      })
+        .then((response) => {
+          console.log(response);
+          if (response.status === 200) {
+            alert("Customer successfully added!!");
+          } else {
+            console.log(response);
+          }
+        })
+        .catch((error) => {
+          console.error("Error occurred:", error);
+          alert("An error occurred. Please try again later.");
+        });
+
+    };
+  }
 
   const handleUpload = async (file) => {
 
@@ -61,9 +113,21 @@ export const AddCustomer = () => {
 
 
 
-  const isValidEmail = (email) => {
-    // Basic email validation regex
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const passwordValidate = (password, conPassword) => {
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,}$/;
+    const isconpassword = password === conPassword
+    const isValidPassword = passwordRegex.test(password);
+    if (!isValidPassword) {
+      setPasErrors("Password do not match or do not meet the criteria")
+      return false
+    } else if (!isconpassword) {
+      setconPasErrors("password matched")
+      return false
+    } else {
+      return true
+    }
+
+
   };
 
   return (
@@ -140,6 +204,28 @@ export const AddCustomer = () => {
                   Onchange={handleChange}
                 />
 
+              </div>
+              <div className='row mt-4'>
+
+                <CommonInput
+                  Label={'password'}
+                  Name={'password'}
+                  PlaceHolder={'Enter your password'}
+                  Type={"password"}
+                  Onchange={handleChange}
+                />
+                <p className='text-danger'>{paserrors}</p>
+              </div>
+              <div className='row mt-4'>
+
+                <CommonInput
+                  Label={'Confirm password'}
+                  Name={'con_password'}
+                  PlaceHolder={'Confirm your password'}
+                  Type={"password"}
+                  Onchange={handleChange}
+                />
+                <p className='text-danger'>{conpaserrors}</p>
               </div>
               <div className='row mt-4'>
                 <CommonInput
