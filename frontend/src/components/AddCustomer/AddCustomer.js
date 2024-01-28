@@ -5,6 +5,8 @@ import img from '../../Assets/Remote meeting-pana.png'
 import React, { useEffect, useState } from 'react';
 import { Cloudinary } from 'cloudinary-core';
 import axios from "axios"
+import { Circles } from "react-loader-spinner";
+import '../../App.css'
 
 
 
@@ -12,6 +14,7 @@ export const AddCustomer = () => {
 
 
   const [inputs, setInputs] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const [paserrors, setPasErrors] = useState(null);
   const [conpaserrors, setconPasErrors] = useState(null);
@@ -31,6 +34,7 @@ export const AddCustomer = () => {
 
 
   const handleSubmit = async (event) => {
+    setLoading(true)
     event.preventDefault();
     const passwordValid = passwordValidate(inputs.password, inputs.con_password)
     if (passwordValid) {
@@ -70,12 +74,15 @@ export const AddCustomer = () => {
           console.log(response);
           if (response.status === 200) {
             alert("Customer successfully added!!");
+            setLoading(false)
           } else {
             console.log(response);
+            setLoading(false)
           }
         })
         .catch((error) => {
           console.error("Error occurred:", error);
+          setLoading(false)
           alert("An error occurred. Please try again later.");
         });
 
@@ -131,134 +138,154 @@ export const AddCustomer = () => {
   };
 
   return (
-    <Layout>
+    <>
+      <Layout>
 
-      <div className='container-fluid p-5 pt-2' style={{ color: 'gray' }}>
-        <h5>Add Customer</h5>
-        <div className='row addCustomer-container'>
+        <div className='container-fluid p-5 pt-2' style={{ color: 'gray' }}>
+          <h5>Add Customer</h5>
+          <div className='row addCustomer-container'>
 
-          <div className='col-md-5 d-flex align-items-center justify-content-center' >
-            <img className={"w-100 d-none d-md-block"} src={img} alt="" />
-          </div>
-          <div className='col-md p-3 mt-1'>
-            <form onSubmit={handleSubmit}>
-              <div className="row">
-                <div className='col-sm-6 mt-4'>
-                  <CommonInput
-                    Label={'First Name'}
-                    Name={'fname'}
-                    PlaceHolder={'Enter your first name'}
-                    Onchange={handleChange}
+            <div className='col-md-5 d-flex align-items-center justify-content-center' >
+              <img className={"w-100 d-none d-md-block"} src={img} alt="" />
+            </div>
+            <div className='col-md p-3 mt-1'>
+              <form onSubmit={handleSubmit}>
+                <div className="row">
+                  <div className='col-sm-6 mt-4'>
+                    <CommonInput
+                      Label={'First Name'}
+                      Name={'fname'}
+                      PlaceHolder={'Enter your first name'}
+                      Onchange={handleChange}
 
 
-                  />
+                    />
+                  </div>
+
+                  <div className='col-sm-6 mt-4'>
+                    <CommonInput
+                      Label={'Last Name'}
+                      Name={'lname'}
+                      PlaceHolder={'Enter your last name'}
+                      Onchange={handleChange}
+                    />
+                  </div>
+
                 </div>
 
-                <div className='col-sm-6 mt-4'>
+                <div className="row mt-4">
+                  <div className='col-sm-6 mt-4'>
+                    <CommonInput
+                      Label={'User Name'}
+                      Name={'Uname'}
+                      PlaceHolder={'Enter your User name'}
+                      Onchange={handleChange}
+                    />
+                  </div>
+
+                  <div className='col-sm-6 mt-4'>
+                    <CommonInput
+                      Label={'Country'}
+                      Name={'country'}
+                      PlaceHolder={'Enter your country'}
+                      Onchange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className='row mt-4'>
+
                   <CommonInput
-                    Label={'Last Name'}
-                    Name={'lname'}
-                    PlaceHolder={'Enter your last name'}
+                    Label={'Email'}
+                    Name={'email'}
+                    PlaceHolder={'mymail@gmail.com'}
                     Onchange={handleChange}
                   />
+
                 </div>
+                <div className='row mt-4'>
 
-              </div>
-
-              <div className="row mt-4">
-                <div className='col-sm-6 mt-4'>
                   <CommonInput
-                    Label={'User Name'}
-                    Name={'Uname'}
-                    PlaceHolder={'Enter your User name'}
+                    Label={'Short Description'}
+                    Name={'shortDescription'}
+                    PlaceHolder={'Enter your words'}
+                    TextArea={true}
                     Onchange={handleChange}
                   />
-                </div>
 
-                <div className='col-sm-6 mt-4'>
+                </div>
+                <div className='row mt-4'>
+
                   <CommonInput
-                    Label={'Country'}
-                    Name={'country'}
-                    PlaceHolder={'Enter your country'}
+                    Label={'password'}
+                    Name={'password'}
+                    PlaceHolder={'Enter your password'}
+                    Type={"password"}
                     Onchange={handleChange}
                   />
+                  <p className='text-danger'>{paserrors}</p>
                 </div>
-              </div>
-              <div className='row mt-4'>
+                <div className='row mt-4'>
 
-                <CommonInput
-                  Label={'Email'}
-                  Name={'email'}
-                  PlaceHolder={'mymail@gmail.com'}
-                  Onchange={handleChange}
-                />
+                  <CommonInput
+                    Label={'Confirm password'}
+                    Name={'con_password'}
+                    PlaceHolder={'Confirm your password'}
+                    Type={"password"}
+                    Onchange={handleChange}
+                  />
+                  <p className='text-danger'>{conpaserrors}</p>
+                </div>
+                <div className='row mt-4'>
+                  <CommonInput
+                    Label={'Profile picture'}
+                    Name={'profilePicture'}
+                    Type={"file"}
+                    Onchange={handleChange}
+                    id={'profilePicture'}
+                  />
 
-              </div>
-              <div className='row mt-4'>
+                </div>
+                <div className='row mt-4'>
 
-                <CommonInput
-                  Label={'Short Description'}
-                  Name={'shortDescription'}
-                  PlaceHolder={'Enter your words'}
-                  TextArea={true}
-                  Onchange={handleChange}
-                />
+                  <CommonInput
+                    Label={'Upload Agreements'}
+                    Name={"agreement"}
+                    Type={"file"}
+                    Onchange={handleChange}
+                    id={"agreement"}
+                  />
 
-              </div>
-              <div className='row mt-4'>
+                </div>
 
-                <CommonInput
-                  Label={'password'}
-                  Name={'password'}
-                  PlaceHolder={'Enter your password'}
-                  Type={"password"}
-                  Onchange={handleChange}
-                />
-                <p className='text-danger'>{paserrors}</p>
-              </div>
-              <div className='row mt-4'>
+                <div className='row mt-4 mb-5'>
+                  <button type="submit" className="btn add-customer-button" style={{ width: 'auto' }}>Add Customer</button>
+                </div>
+              </form>
+            </div>
 
-                <CommonInput
-                  Label={'Confirm password'}
-                  Name={'con_password'}
-                  PlaceHolder={'Confirm your password'}
-                  Type={"password"}
-                  Onchange={handleChange}
-                />
-                <p className='text-danger'>{conpaserrors}</p>
-              </div>
-              <div className='row mt-4'>
-                <CommonInput
-                  Label={'Profile picture'}
-                  Name={'profilePicture'}
-                  Type={"file"}
-                  Onchange={handleChange}
-                  id={'profilePicture'}
-                />
-
-              </div>
-              <div className='row mt-4'>
-
-                <CommonInput
-                  Label={'Upload Agreements'}
-                  Name={"agreement"}
-                  Type={"file"}
-                  Onchange={handleChange}
-                  id={"agreement"}
-                />
-
-              </div>
-
-              <div className='row mt-4 mb-5'>
-                <button type="submit" className="btn add-customer-button" style={{ width: 'auto' }}>Add Customer</button>
-              </div>
-            </form>
           </div>
 
         </div>
+      </Layout>
+      {loading ? (
+        <div className="loader-overlay">
+          <div className="loader">
+            <Circles
+              height="80"
+              width="80"
+              color="#2c9ce7"
+              ariaLabel="circles-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
+        </div>
 
-      </div>
-    </Layout>
+      ) : null}
+
+
+    </>
   )
 }
 
