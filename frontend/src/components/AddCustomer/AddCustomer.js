@@ -34,10 +34,11 @@ export const AddCustomer = () => {
 
 
   const handleSubmit = async (event) => {
-    setLoading(true)
+   
     event.preventDefault();
     const passwordValid = passwordValidate(inputs.password, inputs.con_password)
     if (passwordValid) {
+      setLoading(true)
       const agreementfile = event.target.elements.agreement.files[0];
       const profilePicturefile = event.target.elements.profilePicture.files[0];
       const agreementpicId = await handleUpload(agreementfile);
