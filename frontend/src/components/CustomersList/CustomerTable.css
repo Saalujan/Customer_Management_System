@@ -1,0 +1,85 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn {
+  color: lightblue;
+  background-color: #fff;
+  padding: 5px 12px;
+  margin: 0 5px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: lightblue;
+
+}
+
+.pagination-btn:hover {
+  background: lightblue;
+  color: #fff;
+  border-color: lightblue;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.pagination-btn-active {
+  background: lightblue;
+  color: #fff;
+  border-color: rgb(160, 224, 245);
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+.search-bar {
+  background: #fff;
+  border: 1px solid #cccccc;
+  margin: 15px auto;
+  margin-bottom: 25px;
+  padding: 5px 15px;
+  height: 40px;
+  color: gray;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 50px;
+  max-width: 50%;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.table{
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  text-align: left;
+  min-width: 150px;
+}
+
+.table th {
+  background-color: lightblue;
+  color: white;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link a {
+  padding: 5px 20px;
+  background-color: lightblue;
+  color: white;
+  border-radius: 5px;
+}
+
+.title{
+  color: #333;
+}
