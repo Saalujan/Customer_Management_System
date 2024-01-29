@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Bell from "../Assets/bell-icon.svg";
 import Msg from "../Assets/msg-icon.svg";
 // import Profile from "../src/Assets/profile-img.svg";
-import Profile from "../Assets/layoutDefaultProfile.jpg";
+import Profile from "../Assets/layoutprofile.jpg";
 import FeatherIcon from 'feather-icons-react';
 import { NavLink } from "react-router-dom";
-import Logo from "../Assets/logo.png"
+
 // import Logo from "../Assets/eduzon.svg"
 import SideClose from "../Assets/carbon_side-panel-close.svg";
 // import { useDispatch, useSelector } from 'react-redux'
@@ -28,7 +28,7 @@ function Layout({ children }) {
     return (
         <div className="container-fluid">
             <div className="row flex-nowrap overflow-auto">
-                <div className={(!open ? " col-xl-2" : " w-100px") + (!show ? " mobile-navbar-hide " : " mobile-show ") + " col-auto col-md-1 px-0 bg-default border-right min-vh-100 trans"}>
+                <div className={(!open ? " col-xl-2" : " w-100px") + (!show ? " mobile-navbar-hide " : " mobile-show ") + "col-auto col-md-0 px-0 bg-default  min-vh-100 trans shadow-sm"}>
                     <div className={"logo"}>
                         {!open && <div className={"edulogo"}>
                             {/* <img className={"logosvg ms-4"} src={Logo} alt="" /> */}
@@ -42,7 +42,7 @@ function Layout({ children }) {
                         <div className={"w-100 px-sm-2 home-mobile"}>
                             <NavLink className={({ isActive }) => isActive ? "side-menu-item side-menu-active " : "side-menu-item "} to={"/AddCustomer"}>
                                 <div className={'d-flex'}>
-                                    <FeatherIcon icon="home" className={!open ? 'me-2' : "ms-1"} />
+                                    <FeatherIcon icon="user-plus" className={!open ? 'me-2' : "ms-1"} />
                                     {!open && <div className={'trans-1'}>Add Customer</div>}
                                 </div>
                             </NavLink>
@@ -97,7 +97,7 @@ function Layout({ children }) {
                     </div>
                 </div>
                 <div className="col p-0">
-                    <nav className="navbar navbar-expand-lg bg-white border-bottom-d1d1d1 px-4">
+                    <nav className="navbar navbar-expand-lg bg-white  px-4 shadow-sm">
                         <div className="container-fluid">
                             {/*<a className="navbar-brand" href="#">Navbar</a>*/}
                             <button

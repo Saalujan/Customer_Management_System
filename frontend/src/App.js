@@ -13,6 +13,7 @@ function App() {
   return (
     <div>
       <Routes>
+       
         <Route path="/AddCustomer" element={<AddCustomer />} />
         <Route path="/CustomerDetails" element={<CustomerDetails />} />
         <Route path="/CustomersList" element={<CustomersList />} />
